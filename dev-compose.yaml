@@ -1,0 +1,14 @@
+services:
+  db.goitnotes.com:
+    image: postgres:16.1
+    evironment:
+      POSTGRES_USER: ${PG_USER}
+      POSTGRES_PASSWORD: ${PG_PASSWORD}
+      POSTGRES_DB: ${PG_DB}
+      PGDATA: /var/lib/postgresql/data/pgdata
+    volumes:
+      - type: bind
+        source: ./db_data
+        target: /var/lib/postgresql/data
+    ports:
+      - ${PG_PORT}:${PG_PORT}
