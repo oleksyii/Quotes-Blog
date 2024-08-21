@@ -1,7 +1,7 @@
 services:
   db.goitnotes.com:
     image: postgres:16.1
-    evironment:
+    environment:
       POSTGRES_USER: ${PG_USER}
       POSTGRES_PASSWORD: ${PG_PASSWORD}
       POSTGRES_DB: ${PG_DB}

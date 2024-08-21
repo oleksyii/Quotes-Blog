@@ -1,0 +1,19 @@
+{% extends "quotes/base.html" %}
+
+{% block content %}
+<div class="grid grid-cols-10 mt-2 h-[98vh]">
+    <div class="col-span-2 text-center"><h1>Am I a joke to you?</h1></div>
+    <div class="flex flex-col col-span-6 border-x-2 border-solid border-gray-500 px-2">
+        <div>
+            <h1 class="mx-5 text-5xl font-semibold">BestQuotes.com</h1>
+            <!-- Include the partial template and pass the quote by using "with" parameter -->
+        </div>
+        <div class="flex flex-col gap-4 mt-5 items-center">
+            {% for quote in quotes %}
+                {% include "quotes/_quote.html" with quote=quote %}
+            {% endfor %}
+        </div>
+    </div>
+    <div class="col-span-2 text-center"><h1>Am I a joke to you?</h1></div>
+</div>
+{% endblock %}

@@ -1,0 +1,17 @@
+<div class="flex flex-col gap-2 bg-quote-color w-9/12 px-4 py-2 rounded-md">
+    <div class="text-lg italic">
+        <span>{{ quote.quote }}</span>
+    </div>
+    <div class="flex justify-between">
+        <div class="flex gap-1 items-center">
+            <span class="me-2">Tags:</span>
+            {% for tag in quote.tags %}
+                <div class="text-sm"><a href="TODO: quotes/?tag={{ tag }}" class="bg-tag-color px-2 py-1 rounded-lg">{{ tag }}</a></div>
+            {% endfor %}
+        </div>
+        <div>
+            <span>by {{ quote.author.fullname }}</span>
+            <a href="TODO: authors/{{ quote.author.id }}" class="text-link-color">(about)</a>
+        </div>
+    </div>
+</div>

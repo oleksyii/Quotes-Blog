@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8"/>
+    <title>Best Quotes</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+          theme: {
+            extend: {
+              colors: {
+                'main-color': '#17153B',
+                'tag-color': '#433D8B',
+                'quote-color': '#605C7C',
+                'link-color': '#C8ACD6'
+              }
+            }
+          }
+        }
+      </script>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'quotes/cleanse.css' %}">
+</head>
+<body class="bg-main-color text-white">
+<main class="pt-2">
+    {% block content %} 
+    {% endblock %}
+</main>
+</body>
+</html>
