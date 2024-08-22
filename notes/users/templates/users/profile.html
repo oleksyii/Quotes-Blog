@@ -1,37 +1,44 @@
-{% extends "noteapp/base.html" %}
+{% extends "users/base.html" %}
 
-{% block content %}
+{% block page_content %} 
+<div class="max-w-2xl mx-auto bg-form-color p-8 rounded-lg shadow-md mt-10">
+    <h1 class="text-2xl font-semibold text-center mb-6">Profile Page: {{ user.username }}</h1>
 
-<div>
-    <h1>Profile page: {{user.username}}</h1>
-    <img src="{{ user.profile.avatar.url }}" alt="avatar of user"/>
-</div>
+    <!-- User Avatar -->
+    <div class="flex justify-center mb-6">
+        <img src="{{ user.profile.avatar.url }}" alt="avatar of user" class="w-32 h-32 rounded-full border border-gray-300 object-cover"/>
+    </div>
 
-{% if messages %}
-<div>
-    {% for message in messages %}
-    <div {% if message.tags %} class="alert-{{ message.tags }}" {% endif %}>{{ message }}</div>
-    {% endfor %}
-</div>
-{% endif %}
-
-<form method="post" enctype="multipart/form-data">
-    {% csrf_token %}
-    <div class="form-row">
-        <div class="col-md-5">
-            <div class="form-group">
-                <label class="small mb-1">Change Avatar:</label>
-                {{ profile_form.avatar }}
-                <span>{{ profile_form.errors.avatar }}</span>
-            </div>
+    <!-- Messages Section -->
+    {% if messages %}
+    <div class="mb-6">
+        {% for message in messages %}
+        <div class="p-4 mb-4 text-white rounded-lg {% if message.tags == 'success' %}bg-green-500{% elif message.tags == 'error' %}bg-red-500{% else %}bg-gray-500{% endif %}">
+            {{ message }}
         </div>
+        {% endfor %}
     </div>
-    <div class="grid">
-        <button type="submit">Save Changes</button>
-        <button type="reset" class="secondary">Reset</button>
-    </div>
+    {% endif %}
 
-</form>
+    {% load widget_tweaks %}
+    <!-- Profile Form -->
+    <form method="post" enctype="multipart/form-data" class="space-y-6 ">
+        {% csrf_token %}
 
-{% endblock content %}
+        <!-- Avatar Upload Field -->
+        <div>
+            <label for="id_avatar" class="block text-sm font-medium text-white mb-2">Change Avatar:</label>
+            {{ profile_form.avatar|add_class:"appearance-none border border-gray-300 rounded w-full py-2 px-3 text-gray-300 leading-tight focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500" }}
+            {% if profile_form.errors.avatar %}
+                <p class="text-red-500 text-sm mt-1">{{ profile_form.errors.avatar }}</p>
+            {% endif %}
+        </div>
 
+        <!-- Submit and Reset Buttons -->
+        <div class="flex justify-between">
+            <button type="submit" class="bg-blue-500 hover:bg-blue-600 text-white font-semibold py-2 px-4 rounded focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2">Save Changes</button>
+            <button type="reset" class="bg-gray-500 hover:bg-gray-600 text-white font-semibold py-2 px-4 rounded focus:outline-none focus:ring-2 focus:ring-gray-500 focus:ring-offset-2">Reset</button>
+        </div>
+    </form>
+</div>
+{% endblock %}

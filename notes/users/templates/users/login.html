@@ -1,6 +1,6 @@
-{% extends "noteapp/base.html" %}
+{% extends "users/base.html" %}
 
-{% block content %}
+{% block page_content %} 
 
 {% if messages %}
 <div>
@@ -9,25 +9,30 @@
     {% endfor %}
 </div>
 {% endif %}
+<div>
 
-<form action="{% url 'users:login' %}" method="post">
+
+{% load widget_tweaks %}
+<form action="{% url 'users:login' %}" method="post" class="max-w-md mx-auto p-6 mt-6 rounded-lg shadow-md bg-form-color">
     {% csrf_token %}
-    <div>
-        <label> Username:
-            {{ form.username }}
-        </label>
+    
+    <h2 class="text-2xl font-semibold mb-6 text-center">Login</h2>
+    
+    <div class="mb-4">
+        <label for="id_username" class="block text-sm font-medium text-white mb-2">Username:</label>
+        {{ form.username|add_class:"appearance-none border border-gray-300 rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500" }}
     </div>
 
-    <div>
-        <label>Password:
-            {{ form.password }}
-        </label>
+    <div class="mb-6">
+        <label for="id_password" class="block text-sm font-medium text-white mb-2">Password:</label>
+        {{ form.password|add_class:"appearance-none border border-gray-300 rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500" }}
     </div>
 
-    <div class="grid">
-        <button type="submit">Submit</button>
-        <button type="reset" class="secondary">Reset</button>
+    <div class="flex justify-between items-center">
+        <button type="reset" class="bg-gray-500 hover:bg-gray-600 text-white font-semibold py-2 px-4 rounded focus:outline-none focus:ring-2 focus:ring-gray-500 focus:ring-offset-2">Reset</button>
+        <button type="submit" class="bg-blue-500 hover:bg-blue-600 text-white font-semibold py-2 px-4 rounded focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2">Submit</button>
     </div>
 </form>
+
 
 {% endblock %}

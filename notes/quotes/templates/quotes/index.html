@@ -2,18 +2,68 @@
 
 {% block content %}
 <div class="grid grid-cols-10 mt-2 h-[98vh]">
-    <div class="col-span-2 text-center"><h1>Am I a joke to you?</h1></div>
+    <div class="col-span-2 text-center">
+        {% if user.is_authenticated %}
+        <div class="flex justify-between px-6 pt-2 items-center">
+            <img src="{{ user.profile.avatar.url }}" alt="alt for profile img"
+                class="w-12 h-12 rounded-full border border-gray-300 object-cover" />
+            <div class="flex justify-end gap-3">
+                <a href="/users/profile/" class="text-link-color">Profile</a>
+                <a href="/users/logout/" class="text-link-color">log out</a>
+            </div>
+        </div>
+        {% else %}
+        <div class="flex justify-between px-6 pt-2 items-center">
+            <img src="{{ MEDIA_URL }}/media/guest_image.png" alt="alt for profile img"
+                class="w-12 h-12 rounded-full border border-gray-300 object-cover" />
+            <div class="flex justify-end gap-3">
+                <a href="/users/login/" class="text-link-color">login</a>
+                <a href="/users/signup/" class="text-link-color">sign up</a>
+            </div>
+        </div>
+        {% endif %}
+    </div>
     <div class="flex flex-col col-span-6 border-x-2 border-solid border-gray-500 px-2">
         <div>
             <h1 class="mx-5 text-5xl font-semibold">BestQuotes.com</h1>
-            <!-- Include the partial template and pass the quote by using "with" parameter -->
         </div>
+        {% if user.is_authenticated %}
+        <div class="flex justify-end">
+
+            <button id="dropdownDefaultButton" data-dropdown-toggle="dropdown"
+                type="button">
+                <img src="{{ MEDIA_URL }}/media/plus.png" alt="add" class="w-8 h-8 object-cover">
+            </button>
+
+            <!-- Dropdown menu -->
+            <div id="dropdown"
+                class="z-10 hidden bg-white divide-y divide-gray-100 rounded-lg shadow w-44 dark:bg-gray-700">
+                <ul class="py-2 text-sm text-gray-700 dark:text-gray-200" aria-labelledby="dropdownDefaultButton">
+                    <li >
+                        <a href="{% url 'quotes:add-quote' %}"
+                            class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Add quote</a>
+                    </li>
+                    <li>
+                        <a href="TODO: add-author/"
+                            class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Add author</a>
+                    </li>
+                    <li>
+                        <a href="TODO: scrapeme/"
+                            class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Scrape</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+
+        {% endif %}
         <div class="flex flex-col gap-4 mt-5 items-center">
             {% for quote in quotes %}
-                {% include "quotes/_quote.html" with quote=quote %}
+            {% include "quotes/_quote.html" with quote=quote %}
             {% endfor %}
         </div>
     </div>
-    <div class="col-span-2 text-center"><h1>Am I a joke to you?</h1></div>
+    <div class="col-span-2 text-center">
+        <h1>Am I a joke to you?</h1>
+    </div>
 </div>
 {% endblock %}

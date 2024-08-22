@@ -10,6 +10,7 @@
             extend: {
               colors: {
                 'main-color': '#17153B',
+                'form-color': "#1D267D",
                 'tag-color': '#433D8B',
                 'quote-color': '#605C7C',
                 'link-color': '#C8ACD6'
@@ -17,7 +18,8 @@
             }
           }
         }
-      </script>
+    </script>
+    <link href="https://cdn.jsdelivr.net/npm/flowbite@2.5.1/dist/flowbite.min.css" rel="stylesheet" />
     {% load static %}
     <link rel="stylesheet" href="{% static 'quotes/cleanse.css' %}">
 </head>
@@ -26,5 +28,6 @@
     {% block content %} 
     {% endblock %}
 </main>
+<script src="https://cdn.jsdelivr.net/npm/flowbite@2.5.1/dist/flowbite.min.js"></script>
 </body>
 </html>
