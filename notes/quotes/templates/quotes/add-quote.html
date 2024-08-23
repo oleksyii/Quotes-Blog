@@ -1,34 +1,48 @@
-{% extends "quotes/base.html" %}
+{% extends "users/base.html" %}
 
-{% block content %}
+{% block page_content %}
+<div class="max-w-xl mx-auto mt-10 p-8 bg-form-color rounded-lg shadow-md">
+    {% load widget_tweaks %}
+    <form method="POST" action="{% url 'quotes:add-quote' %}" class="space-y-6">
+        {% csrf_token %}
+        <h2 class="text-2xl font-semibold mb-6 text-center">Add Quote</h2>
+        <!-- Quote Field -->
+        <div>
+            <label for="id_quote" class="block text-sm font-medium text-white mb-1">Quote:</label>
+            {{ form.quote|add_class:"appearance-none border border-gray-300 rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 bg-gray-50" }}
+            {% if form.errors.quote %}
+                <p class="text-red-500 text-sm mt-1">{{ form.errors.quote }}</p>
+            {% endif %}
+        </div>
 
-<form method="POST" action="{% url 'quotes:add-quote' %}">
-    {% csrf_token %}
-    <div style="padding: 10px">
-        <label> Quote:
-            {{ form.quote }}
-        </label>
-        <span>{{ form.errors.quote }}</span>
-    </div>
-    <div style="padding: 10px">
-        <label> Tags:
-            {{ form.tags }}
-        </label>
-        <span>{{ form.errors.descriptagstion }}</span>
-    </div>
-    <div style="padding: 10px">
-        <label> Select author:
-            <select name="author" required>
+        <!-- Tags Field -->
+        <div>
+            <label for="id_tags" class="block text-sm font-medium text-white mb-1">Tags:</label>
+            {{ form.tags|add_class:"appearance-none border border-gray-300 rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 bg-gray-50" }}
+            {% if form.errors.tags %}
+                <p class="text-red-500 text-sm mt-1">{{ form.errors.tags }}</p>
+            {% endif %}
+        </div>
+
+        <!-- Author Select Field -->
+        <div>
+            <label for="id_author" class="block text-sm font-medium text-white mb-1">Select Author:</label>
+            <select name="author" id="id_author" required class="appearance-none border border-gray-300 rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500">
                 {% for author in authors %}
-                <option value="{{author.fullname}}">{{author.fullname}}</option>
+                <option value="{{ author.id }}">{{ author.fullname }}</option>
                 {% endfor %}
             </select>
-        </label>
-    </div>
-    <div class="grid">
-        
-        <button type="submit">Submit</button>
-        <button type="reset" class="secondary">Reset</button>
-    </div>
-</form>
+        </div>
+
+        <!-- Buttons -->
+        <div class="flex justify-between">
+            <button type="submit" class="bg-blue-500 hover:bg-blue-600 text-white font-semibold py-2 px-4 rounded focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2">
+                Submit
+            </button>
+            <button type="reset" class="bg-gray-500 hover:bg-gray-600 text-white font-semibold py-2 px-4 rounded focus:outline-none focus:ring-2 focus:ring-gray-500 focus:ring-offset-2">
+                Reset
+            </button>
+        </div>
+    </form>
+</div>
 {% endblock %}

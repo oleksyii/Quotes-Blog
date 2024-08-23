@@ -44,7 +44,7 @@
                             class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Add quote</a>
                     </li>
                     <li>
-                        <a href="TODO: add-author/"
+                        <a href="{% url 'quotes:add-author' %}"
                             class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Add author</a>
                     </li>
                     <li>
@@ -58,7 +58,7 @@
         {% endif %}
         <div class="flex flex-col gap-4 mt-5 items-center">
             {% for quote in quotes %}
-            {% include "quotes/_quote.html" with quote=quote %}
+                {% include "quotes/_quote.html" with quote=quote %}
             {% endfor %}
         </div>
     </div>

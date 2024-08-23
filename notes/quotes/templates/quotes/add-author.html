@@ -1,0 +1,56 @@
+{% extends "users/base.html" %}
+
+{% block page_content %}
+<div class="max-w-xl mx-auto mt-10 p-8 bg-form-color rounded-lg shadow-md">
+    {% load widget_tweaks %}
+    <form method="POST" action="{% url 'quotes:add-author' %}" class="space-y-6">
+        {% csrf_token %}
+        <h2 class="text-2xl font-semibold mb-6 text-center">Add Author</h2>
+        <!-- Fullname Field -->
+        <div>
+            <label for="id_quote" class="block text-sm font-medium text-white mb-1">Full Name:</label>
+            {{ form.fullname|add_class:"appearance-none border border-gray-300 rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 bg-gray-50" }}
+            {% if form.errors.fullname %}
+                <p class="text-red-500 text-sm mt-1">{{ form.errors.fullname }}</p>
+            {% endif %}
+        </div>
+
+        <!-- Born date Field -->
+        <div>
+            <label for="id_tags" class="block text-sm font-medium text-white mb-1">Born date:</label>
+            {{ form.born_date|add_class:"appearance-none border border-gray-300 rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 bg-gray-50" }}
+            {% if form.errors.born_date %}
+                <p class="text-red-500 text-sm mt-1">{{ form.errors.born_date }}</p>
+            {% endif %}
+        </div>
+
+        <!-- Born location Field -->
+        <div>
+            <label for="id_tags" class="block text-sm font-medium text-white mb-1">Birth location:</label>
+            {{ form.born_location|add_class:"appearance-none border border-gray-300 rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 bg-gray-50" }}
+            {% if form.errors.born_location %}
+                <p class="text-red-500 text-sm mt-1">{{ form.errors.born_location }}</p>
+            {% endif %}
+        </div>
+        
+        <!-- Description Field -->
+        <div>
+            <label for="id_tags" class="block text-sm font-medium text-white mb-1">Description:</label>
+            {{ form.description|add_class:"appearance-none border border-gray-300 rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 bg-gray-50" }}
+            {% if form.errors.description %}
+                <p class="text-red-500 text-sm mt-1">{{ form.errors.description }}</p>
+            {% endif %}
+        </div>
+
+        <!-- Buttons -->
+        <div class="flex justify-between">
+            <button type="submit" class="bg-blue-500 hover:bg-blue-600 text-white font-semibold py-2 px-4 rounded focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2">
+                Submit
+            </button>
+            <button type="reset" class="bg-gray-500 hover:bg-gray-600 text-white font-semibold py-2 px-4 rounded focus:outline-none focus:ring-2 focus:ring-gray-500 focus:ring-offset-2">
+                Reset
+            </button>
+        </div>
+    </form>
+</div>
+{% endblock %}

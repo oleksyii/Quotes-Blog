@@ -11,7 +11,7 @@
         </div>
         <div>
             <span>by {{ quote.author.fullname }}</span>
-            <a href="TODO: authors/{{ quote.author.id }}" class="text-link-color">(about)</a>
+            <a href="{% url 'authors:author' quote.author.id%}" class="text-link-color">(about)</a>
         </div>
     </div>
 </div>
