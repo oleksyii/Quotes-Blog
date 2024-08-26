@@ -78,16 +78,25 @@ TEMPLATES = [
 WSGI_APPLICATION = "notes.wsgi.application"
 
 
+import os
+
+print("\n\n\n\n\n\n\n\n\n\\n\n\nn\n\n\n\n")
+print(os.getenv("PG_DB"))
+print(os.getenv("PG_USER"))
+print(os.getenv("PG_PASSWORD"))
+print(os.getenv("PG_HOST"))
+print(os.getenv("PG_PORT"))
+print("\n\n\n\n\n\n\n\n\n\\n\n\nn\n\n\n\n")
 # Database
 # https://docs.djangoproject.com/en/5.1/ref/settings/#databases
 DATABASES = {
     "default": {
         "ENGINE": "django.db.backends.postgresql_psycopg2",
-        "NAME": "web_10_task",
-        "USER": "postgres",
-        "PASSWORD": "postgres",
-        "HOST": "127.0.0.1",
-        "PORT": "5432",
+        "NAME": os.getenv("PG_DB"),
+        "USER": os.getenv("PG_USER"),
+        "PASSWORD": os.getenv("PG_PASSWORD"),
+        "HOST": os.getenv("PG_HOST"),
+        "PORT": os.getenv("PG_PORT"),
     }
 }
 
