@@ -80,6 +80,7 @@ WSGI_APPLICATION = "notes.wsgi.application"
 
 import os
 
+
 print("\n\n\n\n\n\n\n\n\n\\n\n\nn\n\n\n\n")
 print(os.getenv("PG_DB"))
 print(os.getenv("PG_USER"))

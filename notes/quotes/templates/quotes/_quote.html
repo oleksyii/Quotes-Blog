@@ -6,7 +6,7 @@
         <div class="flex gap-1 items-center">
             <span class="me-2">Tags:</span>
             {% for tag in quote.tags %}
-                <div class="text-sm"><a href="TODO: quotes/?tag={{ tag }}" class="bg-tag-color px-2 py-1 rounded-lg">{{ tag }}</a></div>
+                <div class="text-sm"><a href="{% url 'quotes:tag' tag%}" class="bg-tag-color px-2 py-1 rounded-lg">{{ tag }}</a></div>
             {% endfor %}
         </div>
         <div>

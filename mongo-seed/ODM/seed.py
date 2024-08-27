@@ -20,14 +20,6 @@ def run(authors_file_path: str, quotes_file_path: str):
                     description=author["description"],
                 )
             )
-            # Batch inserting
-            if idx % BATCH_SIZE == 0:
-                try:
-                    insert_runner.do_insert(Author, author_objs)
-                    print(f"Inserted authors batch of size {BATCH_SIZE}")
-                    author_objs = []
-                except (NotUniqueError, ValidationError) as e:
-                    print(f"An error occurred: {e}")
 
         insert_runner.do_insert(Author, author_objs)
         author_objs = []
@@ -44,15 +36,7 @@ def run(authors_file_path: str, quotes_file_path: str):
                     quote=q["quote"],
                 )
             )
-            # Batch inserting
-            if idx % BATCH_SIZE == 0:
-                try:
 
-                    insert_runner.do_insert(Quote, quotes_objs)
-                    print(f"Inserted quotes batch of size {BATCH_SIZE}")
-                    quotes_objs = []
-                except (NotUniqueError, ValidationError) as e:
-                    print(f"An error occurred: {e}")
-
-        Quote.objects.insert(quotes_objs)
+        insert_runner.do_insert(Quote, quotes_objs)
+        quotes_objs = []
         print(f"Finished inserting quotes. Inserted {len(quotes)} quotes")

@@ -21,10 +21,9 @@ RUN pip3 install -r requirements.txt
 # Delete build dependencies
 RUN apk del build-deps gcc
 
-RUN python3 manage.py makemigrations
-
-RUN python3 manage.py migrate
+# Ensure the script is executable
+RUN chmod +x runme.sh
 
 EXPOSE 8000
 
-CMD ["python3", "manage.py", "runserver"]
+CMD ["./runme.sh"]
