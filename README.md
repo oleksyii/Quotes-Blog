@@ -7,7 +7,7 @@ The rules are simple:
 
 1. Clone the repo by using `git clone`, or any other way
 2. `cd` into the cloned repo
-3. Install (if you don't already have) a docker from [here](https://docs.docker.com/engine/install/)
+3. Install (if you don't already have) the docker from [here](https://docs.docker.com/engine/install/)
 4. CREATE `.env` FILE IN THE ROOT (for this example you can just copy the contents of `.env.example`)
 5. Perform `docker build` and then `docker compose up` in the root of the project
 6. Access the application at the address `127.0.0.1:8000/`
