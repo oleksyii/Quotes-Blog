@@ -13,5 +13,3 @@ The rules are simple:
 6. Access the application at the address `127.0.0.1:8000/`
 
 > Additionally, if you want to see the contents of mongo db, you can go to `127.0.0.1:8081/` to explore the db with mongo-express
-
-That's it. If you have any questions, feel free to reach out to me on [Slack](https://python25softw-jvd6587.slack.com/team/U073TRZ7TBP)!
