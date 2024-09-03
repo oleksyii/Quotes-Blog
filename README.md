@@ -1,4 +1,4 @@
-# Hello, welcome to Web Homework 10
+# Hello, welcome to Quotes Blog!
 
 
 >**To run the scripts, please, use the docker compose.**
