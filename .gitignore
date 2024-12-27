@@ -1,4 +1,5 @@
-containers_data/
+containers_data/*
+!containers_data/readme.md
 
 profile_images/
 
