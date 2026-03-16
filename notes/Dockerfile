@@ -26,4 +26,6 @@ RUN chmod +x runme.sh
 
 EXPOSE 8000
 
+# TODO: insert data here
+
 CMD ["./runme.sh"]
