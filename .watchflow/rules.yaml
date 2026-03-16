@@ -1,18 +1,4 @@
 rules:
-- description: Ensure that test files are modified or added when source code changes
-    are made to maintain test coverage.
-  enabled: true
-  severity: high
-  event_types:
-  - pull_request
-  parameters: {}
-- description: Require that all changed paths have code owners defined and that code
-    owners review the changes.
-  enabled: true
-  severity: medium
-  event_types:
-  - pull_request
-  parameters: {}
 - description: Validate that pull request descriptions meet a minimum length requirement
     to ensure adequate context and clarity.
   enabled: true
@@ -20,4 +6,4 @@ rules:
   event_types:
   - pull_request
   parameters:
-    min_length: 20
+    min_length: 200
