@@ -24,6 +24,6 @@ RUN apk del build-deps gcc
 # Ensure the script is executable
 RUN chmod +x runme.sh
 
-EXPOSE 8000
+EXPOSE 8000 8088
 
 CMD ["./runme.sh"]
