@@ -1,0 +1,9 @@
+rules:
+- description: Validate that pull request descriptions meet a minimum length requirement
+    to ensure adequate context and clarity.
+  enabled: true
+  severity: medium
+  event_types:
+  - pull_request
+  parameters:
+    min_length: 200
