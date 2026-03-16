@@ -4,4 +4,5 @@ rules:
   severity: medium
   event_types:
   - pull_request
-  parameters: {}
+  parameters:
+    title_pattern: ".*PR.*"
