@@ -12,3 +12,5 @@ services:
         target: /var/lib/postgresql/data
     ports:
       - ${PG_PORT}:${PG_PORT}
+
+# TODO: add more ports
